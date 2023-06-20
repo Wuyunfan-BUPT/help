@@ -8,13 +8,15 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      - name: get paths
-        run: |
-          pwd
-          ls
       - name: Generate list using Markdown
         run: |
            cat README.md >> $GITHUB_STEP_SUMMARY
-      - name: add Markdown
+  Second-README:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: add Markdown2
         run: |
            cat README1.md >> $GITHUB_STEP_SUMMARY
