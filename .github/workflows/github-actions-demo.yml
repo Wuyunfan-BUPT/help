@@ -17,3 +17,28 @@ jobs:
         with:
           path: README.md
           outputpath: out
+      - name: Show Markdown
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const markdown = `# Hello, World!`;
+            console.log(`::set-output name=markdown::${markdown}`);
+        id: show-markdown
+      - name: Display Markdown
+        if: always()
+        env:
+          MARKDOWN: ${{ steps.show-markdown.outputs.markdown }}
+        run: |
+          echo "${{ env.MARKDOWN }}" | sed 's/^/  /'
+          echo "::set-output name=markdown::${env.MARKDOWN}" >> $GITHUB_ENV
+      - name: Add Comment
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const { data } = await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `${process.env.markdown}`,
+            });
+            console.log(`Comment created: ${data.html_url}`);
