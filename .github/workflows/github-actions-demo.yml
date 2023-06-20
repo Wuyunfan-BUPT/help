@@ -22,5 +22,5 @@ jobs:
         with:
           script: |
             const markdown = `# Hello, World!`;
-            console.log(`::set-output name=markdown::${markdown}`);
+            console.log(`${markdown}`);
         id: show-markdown
