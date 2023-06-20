@@ -5,6 +5,9 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
       - name: Convert Markdown to HTML
         uses: natescherer/markdown-to-html-with-github-style-action@main
         with:
