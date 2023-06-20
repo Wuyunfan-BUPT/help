@@ -5,6 +5,9 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: get path
+        run: |
+          pwd
       - uses: actions/checkout@v3
         with:
           submodules: true
