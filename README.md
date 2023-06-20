@@ -8,7 +8,7 @@
 
 ### :x: Failed Case Detail
 
-#### Name: [com.alibaba.nacos.config.ConfigNormalTest.testPublishAndAddOneListener](https://github.com/nacos-group/nacos-e2e/tree/main/java/nacos-2X/src/test/java/com/alibaba/nacos/config/ConfigNormalTest.java#L94){target="_blank"} Time: 0.303s
+#### Name: [com.alibaba.nacos.config.ConfigNormalTest.testPublishAndAddOneListener](https://github.com/nacos-group/nacos-e2e/tree/main/java/nacos-2X/src/test/java/com/alibaba/nacos/config/ConfigNormalTest.java#L94?target="_blank") Time: 0.303s
 
 <details>
 <summary>Exception Detail</summary>
