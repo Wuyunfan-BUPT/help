@@ -5,14 +5,8 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Convert Markdown to HTML
-        uses: jakejarvis/markdown-to-html-action@v2.1.1
+        uses: natescherer/markdown-to-html-with-github-style-action@v1
         with:
-          markdown_files: |
-            README.md
-      - name: Display HTML
-        run: |
-          echo "${{ steps.convert.outputs.html }}" > index.html
-          echo "::set-output name=html::$(cat index.html)"
+          path: README.md,CHANGELOG.md,docs\doc1.md
+          outputpath: out
