@@ -12,15 +12,6 @@ jobs:
         run: |
           pwd
           ls
-      - name: Convert Markdown to HTML
-        uses: natescherer/markdown-to-html-with-github-style-action@main
-        with:
-          path: README.md
-          outputpath: out
-      - name: Show Markdown
-        uses: actions/github-script@v3
-        with:
-          script: |
-            const markdown = `# Hello, World!`;
-            console.log(`${markdown}`);
-        id: show-markdown
+      - name: Generate list using Markdown
+        run: |
+           echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
