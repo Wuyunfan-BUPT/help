@@ -14,4 +14,4 @@ jobs:
           ls
       - name: Generate list using Markdown
         run: |
-           echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
+           cat README.md >> $GITHUB_STEP_SUMMARY
