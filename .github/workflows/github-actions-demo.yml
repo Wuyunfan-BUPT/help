@@ -5,16 +5,13 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: get path
-        run: |
-          pwd
       - uses: actions/checkout@v3
         with:
           submodules: true
       - name: get paths
         run: |
           pwd
-          ls help
+          ls
       - name: Convert Markdown to HTML
         uses: natescherer/markdown-to-html-with-github-style-action@main
         with:
