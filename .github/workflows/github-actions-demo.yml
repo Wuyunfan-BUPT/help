@@ -15,3 +15,6 @@ jobs:
       - name: Generate list using Markdown
         run: |
            cat README.md >> $GITHUB_STEP_SUMMARY
+      - name: add Markdown
+        run: |
+           cat README1.md >> $GITHUB_STEP_SUMMARY
