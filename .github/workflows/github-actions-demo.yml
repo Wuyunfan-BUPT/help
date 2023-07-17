@@ -11,6 +11,12 @@ jobs:
       - name: Generate list using Markdown
         run: |
            cat README.md >> $GITHUB_STEP_SUMMARY
+      - name: print github.repository
+        run: |
+          echo ${{ github.repository }}
+      - name: print env.ENVIRONMENT_NAME
+        run: |
+          echo ${{ env.ENVIRONMENT_NAME }}
   Second-README:
     runs-on: ubuntu-latest
     steps:
