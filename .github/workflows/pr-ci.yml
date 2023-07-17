@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ main ]
 env:
-  GITHUB_STEP_SUMMARY: '{"myVar": "${{ github.event.client_payload.run_id }}" }'
+  GITHUB_STEP_SUMMARY: TEst
 
 jobs:
   printTest:
