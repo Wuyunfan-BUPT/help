@@ -16,7 +16,7 @@ jobs:
           echo ${{ github.repository }}
       - name: print env.ENVIRONMENT_NAME
         run: |
-          echo ${{ env.ENVIRONMENT_NAME }}
+          echo ${{ github.event_name }}
   Second-README:
     runs-on: ubuntu-latest
     steps:
