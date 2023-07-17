@@ -1,0 +1,14 @@
+name: PR-CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  printTest:
+    name: print test
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        run: |
+          echo hello
