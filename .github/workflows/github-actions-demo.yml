@@ -17,6 +17,14 @@ jobs:
       - name: print env.ENVIRONMENT_NAME
         run: |
           echo ${{ github.event_name }}
+      - name: Save PR number
+        run: |
+          mkdir -p ./pr
+          echo ${{ github.event.number }} > ./pr/NR
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pr
+          path: pr/
   Second-README:
     runs-on: ubuntu-latest
     steps:
