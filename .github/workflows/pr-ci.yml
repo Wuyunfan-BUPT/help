@@ -15,4 +15,10 @@ jobs:
         run: |
           echo ${{ github.event.workflow_run.id }}
           echo ${{ github.event_name }}
-          echo 
+  showResult:
+    name: show result
+    runs-on: ubuntu-latest
+    steps:
+      - name: show in summary
+        run: |
+          echo  ${{ env.MYVARIABLE }}>> $GITHUB_STEP_SUMMARY
