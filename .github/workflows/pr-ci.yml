@@ -42,7 +42,7 @@ jobs:
           echo ${{ github.job }}
       - name: waitting result
         run: |
-          while [ ${{ vars.ABC == "waiting" ]
+          while [ ${{ vars.ABC }} == "waiting" ]
           do
             echo "waiting..."
             sleep 3
