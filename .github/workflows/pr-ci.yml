@@ -25,8 +25,8 @@ jobs:
           echo ${{ vars.test_variables.EFG }}
           echo  ${{ vars.test_variables.EFG }}>> $GITHUB_STEP_SUMMARY
           
-          echo ${{ github.EFG }}
-          echo ${{ github.test_variables.EFG }}
+          echo $EFG
+          echo $EFG
           echo  ${{ github.EFG }}>> $GITHUB_STEP_SUMMARY
           
           echo ${{ env.ABC }}
