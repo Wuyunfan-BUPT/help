@@ -7,12 +7,13 @@ on:
     types:
       - completed
   
-
 jobs:
   RunIdReturn:
-    name: get run id
     runs-on: ubuntu-latest
     steps:
-      - name: curl http
+      - name: print workflow id
         run: |
-          curl -X POST -H "Accept: application/vnd.github.everest-preview+json" -H "Authorization: Bearer ${{ secrets.REPO_TOKEN }}" --data '{"event_type": "update-summary", "client_payload": {"run_id": "${{ github.event.inputs.runId }}"}}' https://api.github.com/repos/Wuyunfan-BUPT/help/dispatches
+          echo ${{ github.event.workflow.id }}
+      - name: print workflow job id
+        run: |
+          echo ${{ github.event.workflow_job.id }}
