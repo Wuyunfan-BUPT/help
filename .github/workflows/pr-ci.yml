@@ -22,5 +22,5 @@ jobs:
     steps:
       - name: show in summary
         run: |
-          echo ${{ env.ABC }}
-          echo  ${{ env.ABC }} >> $GITHUB_STEP_SUMMARY
+          echo ${{ vars.ABC }}
+          echo  ${{ vars.ABC }} >> $GITHUB_STEP_SUMMARY
