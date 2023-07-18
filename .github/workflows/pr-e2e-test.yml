@@ -14,13 +14,13 @@ jobs:
         run: |
           pr_run_id=${{ github.event.workflow_run.id }}
           echo ${pr_run_id}
-          status=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "show result") | .status'`
+          status=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "print test") | .status'`
           echo ${status}
           while [ ${status} != "completed" ]
           do
             echo "waitting..."
             sleep 3
-            status=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "show result") | .status'`
+            status=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "print test") | .status'`
           done
   RunIdReturn:
     runs-on: ubuntu-latest
