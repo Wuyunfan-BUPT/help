@@ -5,6 +5,7 @@ on:
     branches: [ main ]
 env:
   GITHUB_STEP_SUMMARY: TEst
+  MY_TEST: ${{ vars.EFG }}
 
 jobs:
   printTest:
@@ -26,7 +27,7 @@ jobs:
           echo  ${{ vars.test_variables.EFG }}>> $GITHUB_STEP_SUMMARY
           
           echo ${EFG}
-          echo ${{ EFG }}
+          echo ${{ MY_TEST }}
           echo ${{ vars.EFG }}
           echo  ${{ github.EFG }}>> $GITHUB_STEP_SUMMARY
           
