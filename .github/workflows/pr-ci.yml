@@ -21,9 +21,9 @@ jobs:
     steps:
       - name: show in summary
         run: |
-          echo ${{ env.MYVARIABLE }}
-          echo ${{ vars.MYVARIABLE }}
-          echo  ${{ vars.MYVARIABLE }}>> $GITHUB_STEP_SUMMARY
+          echo ${{ env.EFG }}
+          echo ${{ vars.EFG }}
+          echo  ${{ vars.EFG }}>> $GITHUB_STEP_SUMMARY
           
           echo ${{ env.ABC }}
           echo ${{ vars.ABC }}
