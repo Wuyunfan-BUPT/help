@@ -16,6 +16,12 @@ jobs:
         run: |
           echo ${{ github.event.workflow_run.id }}
           echo ${{ github.event_name }}
+      - name: print workflow id
+        run: |
+          echo ${{ github.event.workflow.id }}
+      - name: print workflow job id
+        run: |
+          echo ${{ github.event.workflow_job.id }}
   showResult:
     name: show result
     runs-on: ubuntu-latest
