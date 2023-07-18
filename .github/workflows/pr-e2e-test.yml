@@ -5,7 +5,7 @@ on:
   workflow_run:
     workflows: ["PR-CI"]
     types:
-      - completed
+      - requested
 env:
   IS_END: false
 jobs:
