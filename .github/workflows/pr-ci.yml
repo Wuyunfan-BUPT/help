@@ -21,7 +21,7 @@ jobs:
           echo ${{ github.run_id }}
       - name: print github.job
         run: |
-          echo ${{ github.job_id }}
+          echo ${{ github.job }}
   showResult:
     name: show result
     runs-on: ubuntu-latest
@@ -35,4 +35,4 @@ jobs:
           echo ${{ github.run_id }}
       - name: print github.job
         run: |
-          echo ${{ github.job_id }}
+          echo ${{ github.job }}
