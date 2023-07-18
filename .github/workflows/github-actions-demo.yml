@@ -39,8 +39,6 @@ jobs:
           echo ${{ vars.ABC }}
       - name: set vars.ABC
         run: |
-          vars.ABC="ppo"
-          echo ${{ vars.ABC }}
           echo "oieyrr" >> $vars.ABC
           echo "wdwede" >> $ABC
           
