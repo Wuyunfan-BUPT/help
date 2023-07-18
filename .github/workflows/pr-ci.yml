@@ -24,3 +24,8 @@ jobs:
           echo ${{ env.MYVARIABLE }}
           echo ${{ vars.MYVARIABLE }}
           echo  ${{ vars.MYVARIABLE }}>> $GITHUB_STEP_SUMMARY
+          
+          echo ${{ env.ABC }}
+          echo ${{ vars.ABC }}
+          echo  ${{ vars.ABC }}>> $GITHUB_STEP_SUMMARY
+          echo  ${{ env.ABC }}>> $GITHUB_STEP_SUMMARY
