@@ -21,7 +21,7 @@ jobs:
           echo ${{ github.run_id }}
       - name: print github.job
         run: |
-          sleep 30
+          sleep 10
           echo ${{ github.job }}
       - name: set IS_END values
         run: |
