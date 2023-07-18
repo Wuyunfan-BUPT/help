@@ -7,6 +7,19 @@ on:
     types:
       - requested
 jobs:
+  waitPr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: waiting pr-ci
+        run: |
+          pr_run_id=${{ github.event.workflow_run.id }}
+          echo ${pr_run_id}
+          status=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "show result") | .status'`
+          while [ ${status} != "completed" ]
+          do
+            echo "waitting..."
+            sleep 3
+          done
   RunIdReturn:
     runs-on: ubuntu-latest
     steps:
@@ -15,8 +28,9 @@ jobs:
           echo ${{ github.event.workflow_run.id }}
           pr_run_id=${{ github.event.workflow_run.id }}
           echo ${pr_run_id}
-          job_id=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "show result") | .id'`
+          job_id=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "print test") | .id'`
           echo ${job_id}
+          
           echo ${{ github.run_id }}
           echo "curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.ACTION_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/Wuyunfan-BUPT/help/actions/variables"
           curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.ACTION_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/Wuyunfan-BUPT/help/actions/variables/ABC -d '{"name":"ABC","value": ${{ github.run_id }}}'
