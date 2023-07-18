@@ -45,7 +45,7 @@ jobs:
         run: |
           while [ ${{ vars.ABC }} == "waiting" ]
           do
-            echo "waiting..."
+            echo "${{ vars.ABC }}..."
             sleep 3
           done
           echo ${{ vars.ABC }}
