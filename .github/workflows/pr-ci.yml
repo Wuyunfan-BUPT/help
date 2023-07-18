@@ -43,10 +43,11 @@ jobs:
           echo ${{ github.job }}
       - name: waitting result
         run: |
-          while [ ${{ vars.ABC }} == "waiting" ]
+          values=`curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer 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" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/Wuyunfan-BUPT/help/actions/variables | jq -r '.variables[] | select(.name == "ABC") | .value'`
+          while [ ${values} == "waiting" ]
           do
-            echo "${{ vars.ABC }}..."
+            echo "${values}..."
             sleep 3
           done
-          echo ${{ vars.ABC }}
-          echo  ${{ vars.ABC }} >> $GITHUB_STEP_SUMMARY
+          echo ${values}
+          echo  ${values} >> $GITHUB_STEP_SUMMARY
