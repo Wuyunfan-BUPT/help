@@ -34,3 +34,13 @@ jobs:
       - name: add Markdown2
         run: |
            cat README1.md >> $GITHUB_STEP_SUMMARY
+      - name: print vars.ABC
+        run: |
+          echo ${{ vars.ABC }}
+      - name: set vars.ABC
+        run: |
+          vars.ABC="ppo"
+          echo ${{ vars.ABC }}
+          echo "oieyrr" >> $vars.ABC
+          echo "wdwede" >> $ABC
+          
