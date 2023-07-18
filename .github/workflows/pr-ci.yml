@@ -33,6 +33,7 @@ jobs:
       - name: print github.job
         run: |
           echo ${{ github.job }}
+          echo ${{ env.BASE_URL }}
       - name: waitting result
         run: |
           values=`curl -L ${{ env.HEADER }} ${{ env.BASE_URL }} | jq -r '.variables[] | select(.name == "VARI_${{ github.run_id }}") | .value'`
