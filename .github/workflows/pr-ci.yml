@@ -42,8 +42,6 @@ jobs:
             values=`curl -L ${{ env.HEADER }} ${{ env.BASE_URL }} | jq -r '.variables[] | select(.name == "VARI_${{ github.run_id }}") | .value'`
           done
           echo ${values}
-      - name: generate summary
-        run: |
           echo  "https://github.com/Wuyunfan-BUPT/help/actions/runs/${values}" >> $GITHUB_STEP_SUMMARY
       - name: delete variables
         run: |
