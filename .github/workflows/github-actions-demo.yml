@@ -9,7 +9,7 @@ jobs:
         run: |
           number=''
           count=5
-          while [[ "$number" == "" || $count -gt 0 ]]
+          while [[ "$number" == "" && $count -gt 0 ]]
           do
             let "count--"
             echo ${count}
