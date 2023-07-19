@@ -7,6 +7,7 @@ on:
     types:
       - completed
 env:
+    REPO_NAME: Wuyunfan-BUPT/help
     BASE_RUN_URL: https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs
     HEADER: "-H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer ${{ secrets.ACTION_TOKEN }}\" -H \"X-GitHub-Api-Version: 2022-11-28\""
     BASE_URL: https://api.github.com/repos/${REPO_NAME}/actions/variables
