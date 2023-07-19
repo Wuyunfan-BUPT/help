@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: test while
         run: |
-          number = "ii"
+          number="ii"
           count = 5
           while [ (${number} == "") || ( ${count} > 0 ) ]
           do
