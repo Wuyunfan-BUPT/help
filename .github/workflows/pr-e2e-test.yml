@@ -16,20 +16,20 @@ jobs:
         run: |
           pr_run_id=${{ github.event.workflow_run.id }}
           echo ${pr_run_id}
-          status=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "print test") | .status'`
+          status=`curl -s ${BASE_RUN_URL}/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "print test") | .status'`
           echo ${status}
           while [ ${status} != "completed" ]
           do
             echo "waitting..."
             sleep 3
-            status=`curl -s https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "print test") | .status'`
+            status=`curl -s ${BASE_RUN_URL}/${pr_run_id}/jobs | jq -r '.jobs[] | select(.name == "print test") | .status'`
           done
   RunIdReturn:
     needs: [waitPr]
     runs-on: ubuntu-latest
     if: >
       github.event.workflow_run.event == 'pull_request' &&
-      `curl -s ${env.BASE_RUN_URL}/${{ github.event.workflow_run.id }}/jobs | jq -r '.jobs[] | select(.name == "print test") | .conclusion'` == 'success'
+      `curl -s ${BASE_RUN_URL}/${{ github.event.workflow_run.id }}/jobs | jq -r '.jobs[] | select(.name == "print test") | .conclusion'` == 'success'
    
     steps:
       - name: print workflow_run id
