@@ -62,7 +62,7 @@ jobs:
           echo `curl -L ${{ env.HEADER }} ${{ env.BASE_URL }}`
           number=`curl -L ${{ env.HEADER }} ${{ env.BASE_URL }} | jq -r '.variables[] | select(.name == "VARI_${{ github.event.workflow_run.id }}") | .value'`
           echo ${number}
-          while [ ${number}=="" ]
+          while [ ${number} == "" ]
           do
             echo `curl -L ${{ env.HEADER }} ${{ env.BASE_URL }}`
             echo "number=${number}"
