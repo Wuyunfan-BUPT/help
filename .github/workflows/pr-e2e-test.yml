@@ -56,6 +56,7 @@ jobs:
     steps:
       - name: print issue number
         run: |
+          sleep 5
           echo "${{ github.event.issue.number }}"
           echo "${{ github.event.pull_request.number }}"
           number=`curl -L ${{ env.HEADER }} ${{ env.BASE_URL }} | jq -r '.variables[] | select(.name == "VARI_${{ github.event.workflow_run.id }}") | .value'`
