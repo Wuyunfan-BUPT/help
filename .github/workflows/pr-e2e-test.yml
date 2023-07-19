@@ -29,10 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     if: >
       github.event.workflow_run.event == 'pull_request' &&
-      'success' == (curl -s ${BASE_RUN_URL}/${{ github.event.workflow_run.id }}/jobs | jq -r '.jobs[] | select(.name == "print test") | .conclusion')
+      'success' == `curl -s ${BASE_RUN_URL}/${{ github.event.workflow_run.id }}/jobs | jq -r '.jobs[] | select(.name == "print test") | .conclusion'`
     steps:
       - name: print workflow_run id
         run: |
+          echo `curl -s ${BASE_RUN_URL}/${{ github.event.workflow_run.id }}/jobs | jq -r '.jobs[] | select(.name == "print test") | .conclusion'`
           echo ${{ github.event.workflow_run.id }}
           pr_run_id=${{ github.event.workflow_run.id }}
           echo ${pr_run_id}
