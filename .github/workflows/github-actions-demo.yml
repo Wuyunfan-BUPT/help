@@ -7,9 +7,9 @@ jobs:
     steps:
       - name: test while
         run: |
-          number="ii"
+          number1='ii'
           count = 5
-          while [ (${number} == "") || ( ${count} > 0 ) ]
+          while [ (${number1} == "") || ( ${count} > 0 ) ]
           do
             let "count--"
             echo ${count}
