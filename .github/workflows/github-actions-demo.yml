@@ -7,13 +7,13 @@ jobs:
     steps:
       - name: test while
         run: |
-          number='ii'
+          number=''
           count=5
           while [[ "$number" == "" || $count -gt 0 ]]
           do
             let "count--"
             echo ${count}
-            number=''
+            number='ii'
           done
       - uses: actions/checkout@v3
         with:
