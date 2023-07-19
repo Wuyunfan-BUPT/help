@@ -5,7 +5,7 @@ on:
   workflow_run:
     workflows: ["PR-CI"]
     types:
-      - requested
+      - completed
 env:
     BASE_RUN_URL: https://api.github.com/repos/Wuyunfan-BUPT/help/actions/runs
     HEADER: "-H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer ${{ secrets.ACTION_TOKEN }}\" -H \"X-GitHub-Api-Version: 2022-11-28\""
