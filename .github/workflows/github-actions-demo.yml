@@ -5,6 +5,15 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: test while
+        run: |
+          number = "ii"
+          count = 5
+          while [ (${number} == "") || ( ${count} > 0 ) ]
+          do
+            let "count--"
+            echo ${count}
+          done
       - uses: actions/checkout@v3
         with:
           submodules: true
