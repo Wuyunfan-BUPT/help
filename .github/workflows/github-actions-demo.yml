@@ -13,6 +13,7 @@ jobs:
           do
             let "count--"
             echo ${count}
+            number=""
           done
       - uses: actions/checkout@v3
         with:
