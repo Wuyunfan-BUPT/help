@@ -8,7 +8,7 @@ jobs:
       - name: test while
         run: |
           number1='ii'
-          count = 5
+          count=5
           while [ (${number1} == "") || ( ${count} > 0 ) ]
           do
             let "count--"
