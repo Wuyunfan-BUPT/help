@@ -54,12 +54,10 @@ jobs:
       - name: Add comment
         uses: actions/github-script@v3
         with:
+          github-token: ${{ secrets.ACTION_TOKEN }}
           script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: "https://github.com/${{ env.REPO_NAME }}/actions/runs/${{ github.run_id }}"
-            })
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+            const { owner, repo } = context.repo;
+            const { number } = context.issue;
+            const comment = "https://github.com/Wuyunfan-BUPT/help/actions/runs/${{ github.run_id }}";
+            const { data } = await github.issues.createComment({ owner, repo, issue_number: number, body: comment });
+            console.log(`Comment created: ${data.html_url}`);
