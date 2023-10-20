@@ -5,6 +5,10 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      steps:
+      - name: Print IP Address
+        run: ｜
+          echo "Machine IP Address is $(curl -s https://api.ipify.org)"
       - name: test while
         run: |
           number=''
