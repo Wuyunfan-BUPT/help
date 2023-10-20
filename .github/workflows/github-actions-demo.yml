@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print IP Address
-        run: ｜
+        run: |
+          echo "hello"
           echo "Machine IP Address is $(curl -s https://api.ipify.org)"
       - name: test while
         run: |
