@@ -12,6 +12,14 @@ jobs:
     name: print test
     runs-on: ubuntu-latest
     steps:
+      - name: set output
+        run: |
+          echo "{REPLICA_COUNT}={3}" >> $GITHUB_STATE
+          echo "{DATABASE}={mysql}" >> $GITHUB_STATE
+      - name: print output
+        run: |
+          echo ${{ GITHUB_STATE.REPLICA_COUNT }}
+          echo ${{ GITHUB_STATE.DATABASE }}
       - name: print issue number
         run: |
           echo $GITHUB_REPOSITORY
