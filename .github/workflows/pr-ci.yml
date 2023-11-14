@@ -16,7 +16,7 @@ jobs:
         run: |
           echo "REPLICA_COUNT=3" >> $GITHUB_ENV
           echo "DATABASE=mysql" >> $GITHUB_ENV
-          echo "NODE_PORT=$(expr $(expr $(expr $(expr 1 * $(expr ${{ github.run_number }} - 1)) + ${{ strategy.job-index }}) % 30000) + 30000)" >> $GITHUB_EN
+          echo "NODE_PORT=$(expr $(expr $(expr $(expr 1 * $(expr ${{ github.run_number }} - 1)) + ${{ strategy.job-index }}) % 30000) + 30000)" >> $GITHUB_ENV
       - name: print output
         run: |
           echo ${{ env.REPLICA_COUNT }}
