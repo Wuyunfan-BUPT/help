@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: set output
         run: |
-          echo "{REPLICA_COUNT}={3}" >> $GITHUB_ENV
-          echo "{DATABASE}={mysql}" >> $GITHUB_ENV
+          echo "REPLICA_COUNT=3" >> $GITHUB_ENV
+          echo "DATABASE=mysql" >> $GITHUB_ENV
       - name: print output
         run: |
           echo ${{ env.REPLICA_COUNT }}
