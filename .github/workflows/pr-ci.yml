@@ -23,7 +23,9 @@ jobs:
             echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO }}" >> $GITHUB_ENV
           else
             echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO_B }}" >> $GITHUB_ENV
+          fi
           echo ${{ env.DOCKER_REPO_ACTUAL }}
+          
           # if [[ $((random_number % 2)) -eq 1 ]]; then
           #   echo "HELLO1=1" >> $GITHUB_ENV
           #   echo "HELLO2=embedded" >> $GITHUB_ENV
