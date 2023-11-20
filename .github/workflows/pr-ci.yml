@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: allocate docker repo
-        if: ${{ mod(github.run_id, 2) == 1 }}
+        if: ${{ github.run_id % 2 == 1 }}
         run: |
           echo "hello1=1" >> $GITHUB_ENV
           echo "hello2=embedded" >> $GITHUB_ENV
