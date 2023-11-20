@@ -19,7 +19,7 @@ jobs:
       - name: allocate docker repo
         if: $(expr ${{ env.RANDOM}} & 2 ) == 1
         run: |
-          if [[ $(((env.RANDOM_NUMBER + ${{ strategy.job-index }}) % 2)) -eq 1 ]]; then
+          if [[ (( ${{ env.RANDOM_NUMBER }} + ${{ strategy.job-index }}) % 2) -eq 1 ]]; then
             echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO }}" >> $GITHUB_ENV
           else
             echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO_B }}" >> $GITHUB_ENV
