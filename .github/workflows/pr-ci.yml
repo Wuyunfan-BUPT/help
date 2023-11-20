@@ -7,8 +7,6 @@ env:
   REPO_NAME: Wuyunfan-BUPT/help
   HEADER: "-H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer ${{ secrets.ACTION_TOKEN }}\" -H \"X-GitHub-Api-Version: 2022-11-28\""
   BASE_URL: https://api.github.com/repos/${REPO_NAME}/actions/variables
-  HELLO1: 2
-  HELLO2: mysql
 jobs:
   printTest:
     name: print test
@@ -17,9 +15,13 @@ jobs:
       - name: allocate docker repo
         if: $(expr ${{ env.RANDOM}} & 2 ) == 1
         run: |
-          echo ${{ github.run_id }}
-          echo "HELLO1=1" >> $GITHUB_ENV
-          echo "HELLO2=embedded" >> $GITHUB_ENV
+          if [[ $((random_num % 2)) -eq 1 ]]; then
+            echo "HELLO1=1" >> $GITHUB_ENV
+            echo "HELLO2=embedded" >> $GITHUB_ENV
+          else
+            echo "HELLO1=2" >> $GITHUB_ENV
+            echo "HELLO2=MYSQL" >> $GITHUB_ENV
+          fi
       - name: Get allocate result
         run: echo "${{ env.HELLO1 }}    ${{ env.HELLO2 }}"
       - uses: actions/github-script@v6
