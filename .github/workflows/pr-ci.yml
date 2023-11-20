@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: allocate docker repo
         run: |
-          if [[ ${{ github.run_id }} % 2 == 1 ]]; then
+          if [[ $(expr ${{ github.run_id }} % 2 ) == 1 ]]; then
             echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO }}" >> $GITHUB_ENV
           else
             echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO_B }}" >> $GITHUB_ENV
