@@ -15,7 +15,8 @@ jobs:
       - name: allocate docker repo
         if: $(expr ${{ env.RANDOM}} & 2 ) == 1
         run: |
-          if [[ $((random_num % 2)) -eq 1 ]]; then
+          random_number=$(( RANDOM % 100 ))
+          if [[ $((random_number % 2)) -eq 1 ]]; then
             echo "HELLO1=1" >> $GITHUB_ENV
             echo "HELLO2=embedded" >> $GITHUB_ENV
           else
