@@ -12,6 +12,13 @@ jobs:
     name: print test
     runs-on: ubuntu-latest
     steps:
+      - name: allocate docker repo
+        if: ${{ mod(github.run_id, 2) == 1 }}
+        run: |
+          echo "hello1=1" >> $GITHUB_ENV
+          echo "hello2=embedded" >> $GITHUB_ENV
+      - name: Get allocate result
+        run: echo "${{ env.hello1 }}    ${{ env.hello2 }}"
       - uses: actions/github-script@v6
         id: set-result
         with:
