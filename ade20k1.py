@@ -1,4 +1,4 @@
-# dataset settings
+# dataset settings    
 dataset_type = 'ADE20KDataset'
 data_root = '/kaggle/input/ade20k/ADEChallengeData2016'
 img_norm_cfg = dict(
