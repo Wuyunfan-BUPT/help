@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: allocate docker repo
-        if: $(expr ${{ env.RANDOM }} % 2 == 1 )
+        if: ${{ ( env.RANDOM % 2 ) == 1 }}
         run: |
           echo ${{ github.run_id }}
           echo "hello1=1" >> $GITHUB_ENV
