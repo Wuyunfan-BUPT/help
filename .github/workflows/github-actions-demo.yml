@@ -10,6 +10,13 @@ env:
 
   
 jobs:
+  Set-ENV:
+    runs-on: ubuntu-latest
+    steps:
+      - name: set version
+        if: ${{ !env.VERSION }}
+        run: |
+          echo "VERSION=${{ github.event.pull_request.number || github.ref_name }}-$(uuidgen)" >> $GITHUB_ENV
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     strategy:
@@ -18,10 +25,6 @@ jobs:
         java-version: ["8"]
         DOCKER_REPO_ADDR: [ DOCKER_REPO_B , DOCKER_REPO ]
     steps:
-      - name: set version
-        if: ${{ !env.VERSION }}
-        run: |
-          echo "VERSION=${{ github.event.pull_request.number || github.ref_name }}-$(uuidgen)" >> $GITHUB_ENV
       - name: echo version
         run: |
            echo ${{ env.VERSION }}
