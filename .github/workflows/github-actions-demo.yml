@@ -19,7 +19,7 @@ jobs:
         DOCKER_REPO_ADDR: [ DOCKER_REPO_B , DOCKER_REPO ]
     steps:
       - name: set version
-        if: ${{ env.VERSION }}
+        if: ! ${{ env.VERSION }}
         run: |
           echo "VERSION=${{ github.event.pull_request.number || github.ref_name }}-$(uuidgen)" >> $GITHUB_ENV
       - name: echo version
