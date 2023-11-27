@@ -33,9 +33,12 @@ jobs:
       - name: set hello_here
         run: |
           hello_here=123
+          echo hell
+          echo "hello_there=456"  >> $GITHUB_ENV
       - name: print hello_here
         run: |
           echo ${hello_here}
+          echo "hello_there=${hello_there}"
       - name: echo version
         run: |
            echo ${{ env.VERSION }}
