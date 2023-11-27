@@ -30,6 +30,12 @@ jobs:
         java-version: ["8"]
         DOCKER_REPO_ADDR: [ DOCKER_REPO_B , DOCKER_REPO ]
     steps:
+      - name: set hello_here
+        run: |
+          hello_here=123
+      - name: print hello_here
+        run: |
+          echo ${hello_here}
       - name: echo version
         run: |
            echo ${{ env.VERSION }}
