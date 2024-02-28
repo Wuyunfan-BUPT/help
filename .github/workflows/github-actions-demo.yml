@@ -19,7 +19,7 @@ jobs:
       steps:
         - uses: actions/checkout@v3
           with:
-            repository: https://github.com/Wuyunfan-BUPT/nacosTestTools.git
+            repository: Wuyunfan-BUPT/nacosTestTools.git
             ref: master
             path: nacos-e2e
         - name: Generate image tag
