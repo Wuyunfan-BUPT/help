@@ -25,7 +25,6 @@ jobs:
         - name: Generate image tag
           id: build-images
           run: |
-            cd nacos-e2e
             echo TAG=version-ubuntu >> $GITHUB_ENV
         - name: docker-login-1
           uses: docker/login-action@v2
