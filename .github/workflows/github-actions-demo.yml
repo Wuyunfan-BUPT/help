@@ -21,7 +21,7 @@ jobs:
           with:
             repository: Wuyunfan-BUPT/nacosTestTools.git
             ref: master
-            path: nacos-e2e
+            path: nacosTestTools
         - name: Generate image tag
           id: build-images
           run: |
@@ -36,6 +36,7 @@ jobs:
         - name: save docker_1 images
           run: |
             mkdir build_backup
-            cp -rf nacos-e2e/* ./build_backup/
+            cd nacosTestTools
+            cp -rf nacosTestTools/* ./build_backup/
             docker build --no-cache -f Dockerfile -t ${DOCKER_REPO}:${{ env.TAG }} .
             docker push ${DOCKER_REPO}:${{ env.TAG }}
