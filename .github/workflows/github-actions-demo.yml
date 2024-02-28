@@ -36,6 +36,6 @@ jobs:
           run: |
             mkdir build_backup
             cd nacosTestTools
-            cp -rf nacosTestTools/* ./build_backup/
+            cp -rf ./* ../build_backup/
             docker build --no-cache -f Dockerfile -t ${DOCKER_REPO}:${{ env.TAG }} .
             docker push ${DOCKER_REPO}:${{ env.TAG }}
