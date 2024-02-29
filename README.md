@@ -4,7 +4,6 @@
 |Total|Success|Failure|Error|Skipped|
 |-----|-------|-------|-----|-------|
 |78|9|23|42|4|
-   
   
 ### :x: Failed Case Detail
 
