@@ -5,7 +5,7 @@
 |-----|-------|-------|-----|-------|
 |78|9|23|42|4|  
 
-
+ 
 ### :x: Failed Case Detail
 
 #### Name: [com.alibaba.nacos.config.ConfigNormalTest.testPublishAndAddOneListener](https://github.com/nacos-group/nacos-e2e/tree/main/java/nacos-2X/src/test/java/com/alibaba/nacos/config/ConfigNormalTest.java#L94) Time: 0.303s
