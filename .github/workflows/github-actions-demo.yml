@@ -38,4 +38,4 @@ jobs:
             cd nacosTestTools
             cp -rf ./* ../build_backup/
             docker build --no-cache -f Dockerfile -t ${DOCKER_REPO}:v0 .
-            docker push ${DOCKER_REPO}:${{ env.TAG }}
+            docker push ${DOCKER_REPO}:v0
