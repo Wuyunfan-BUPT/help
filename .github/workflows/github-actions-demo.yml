@@ -37,5 +37,5 @@ jobs:
             mkdir build_backup
             cd nacosTestTools
             cp -rf ./* ../build_backup/
-            docker build --no-cache -f Dockerfile -t ${DOCKER_REPO}:v1 .
-            docker push ${DOCKER_REPO}:v1
+            docker build --no-cache -f Dockerfile -t ${DOCKER_REPO}:v2 .
+            docker push ${DOCKER_REPO}:v2
