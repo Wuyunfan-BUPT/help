@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: nacos-group/nacos-e2e.git
-          ref: main
+          repository: Wuyunfan-BUPT/nacos-e2e.git
+          ref: fix-centos-repo-error
           path: nacos-e2e
       - name: Generate image tag
         id: build-images
