@@ -17,6 +17,16 @@ jobs:
       matrix:
         mode: ["cluster","standalone"]
     steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: nacos-group/nacos-e2e.git
+          ref: main
+          path: nacos-e2e
+      - name: Generate image tag
+        id: build-images
+        run: |
+          cd nacos-e2e/cicd/build
+          docker build --no-cache -f Dockerfile -t ww:1 .
       - name: allocate docker repo
         run: |
           if [[ $(expr $(expr ${{ github.run_id }} + ${{ strategy.job-index }} ) % 2 ) -eq 1 ]]; then
