@@ -74,8 +74,8 @@ jobs:
     name: hello1
     runs-on: ubuntu-latest
     outputs:
-      printHello_echo1: ${{ steps.echo1.outputs.result }}
-      printHello_echo2: ${{ steps.echo2.outputs.result }}
+      printHello_echo1: ${{ steps.echo1.outputs }}
+      printHello_echo2: ${{ steps.echo2.outputs }}
     steps:
       - name: echo1
         run: |
@@ -87,8 +87,8 @@ jobs:
     name: hello3
     runs-on: ubuntu-latest
     outputs:
-      printWYF_echo3: ${{ steps.echo3.outputs.result }}
-      printWYF_echo4: ${{ steps.echo4.outputs.result }}
+      printWYF_echo3: ${{ steps.echo3.outputs }}
+      printWYF_echo4: ${{ steps.echo4.outputs }}
     steps:
       - name: echo3
         run: |
