@@ -111,13 +111,13 @@ jobs:
     steps:
       - name: info
         run: |
-          echo "printWYF: ${needs.printHello.printHello_echo1}"
-          echo "printWYF: ${needs.printWYF.printWYF_echo3}"
+          echo "printWYF: ${needs.printHello.outputs.printHello_echo1}"
+          echo "printWYF: ${needs.printWYF.outputs.printWYF_echo3}"
 
       - name: info1
         run: |
-          echo "printHello: ${needs.printWYF.printWYF_echo3}"
-          echo "printWYF: ${needs.printWYF.printWYF_echo4}"
+          echo "printHello: ${needs.printWYF.outputs.printWYF_echo3}"
+          echo "printWYF: ${needs.printWYF.outputs.printWYF_echo4}"
 #      - name: set IS_END values
 #        run: |
 #          curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.ACTION_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/Wuyunfan-BUPT/help/actions/variables/ABC -d '{"name":"ABC","value":"waiting"}'
