@@ -22,54 +22,54 @@ jobs:
           repository: Wuyunfan-BUPT/nacos-e2e.git
           ref: fix-centos-repo-error
           path: nacos-e2e
-      - name: Generate image tag
-        id: build-images
-        run: |
-          cd nacos-e2e/cicd/build
-          docker build --no-cache -f Dockerfile -t ww:1 .
-      - name: allocate docker repo
-        run: |
-          if [[ $(expr $(expr ${{ github.run_id }} + ${{ strategy.job-index }} ) % 2 ) -eq 1 ]]; then
-            echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO }}" >> $GITHUB_ENV
-          else
-            echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO_B }}" >> $GITHUB_ENV
-          fi
-          echo ${{ env.DOCKER_REPO_ACTUAL }}
-      - name: Get allocate result
-        run: echo "${{ env.DOCKER_REPO_ACTUAL }}    ${{ env.DOCKER_REPO_ACTUAL2 }}"
-      - uses: actions/github-script@v6
-        id: set-result
-        with:
-          script: return "Hello!"
-          result-encoding: string
-      - name: Get result
-        run: echo "${{steps.set-result.outputs.result}}"
-      - name: set output
-        run: |
-          echo "REPLICA_COUNT=3" >> $GITHUB_ENV
-          echo "DATABASE=mysql" >> $GITHUB_ENV
-          echo "NODE_PORT=$(expr $(expr $(expr $(expr 1 * $(expr ${{ github.run_number }} - 1)) + ${{ strategy.job-index }}) % 30000) + 30000)" >> $GITHUB_ENV
-      - name: print output
-        run: |
-          echo ${{ env.REPLICA_COUNT }}
-          echo ${{ env.DATABASE }}
-          echo ${{ env.NODE_PORT }}
-      - name: print issue number
-        run: |
-          echo $GITHUB_REPOSITORY
-          echo ${{ github.event.pull_request.number }}
-          echo ${{ github.event.issue.number }}
-          echo ${NUMBER}
-          curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.ACTION_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/Wuyunfan-BUPT/help/issues/${{ github.event.pull_request.number }}/comments -d "{\"body\":\"https://github.com/Wuyunfan-BUPT/help/actions/runs/${{ github.run_id }}\"}"
-        env:
-          NUMBER: ${{ github.event.issue.number }}
-#       - name: print github.job
+#       - name: Generate image tag
+#         id: build-images
 #         run: |
-#           sleep 10
-#           echo ${{ github.job }}
-      - name: generate TEMP_VARI
-        run: |
-          curl -L -X POST ${{ env.HEADER }} ${{ env.BASE_URL }} -d "{\"name\":\"VARI_${{ github.run_id }}\",\"value\":\"${{ github.event.pull_request.number }}\"}"
+#           cd nacos-e2e/cicd/build
+#           docker build --no-cache -f Dockerfile -t ww:1 .
+#       - name: allocate docker repo
+#         run: |
+#           if [[ $(expr $(expr ${{ github.run_id }} + ${{ strategy.job-index }} ) % 2 ) -eq 1 ]]; then
+#             echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO }}" >> $GITHUB_ENV
+#           else
+#             echo "DOCKER_REPO_ACTUAL=${{ env.DOCKER_REPO_B }}" >> $GITHUB_ENV
+#           fi
+#           echo ${{ env.DOCKER_REPO_ACTUAL }}
+#       - name: Get allocate result
+#         run: echo "${{ env.DOCKER_REPO_ACTUAL }}    ${{ env.DOCKER_REPO_ACTUAL2 }}"
+#       - uses: actions/github-script@v6
+#         id: set-result
+#         with:
+#           script: return "Hello!"
+#           result-encoding: string
+#       - name: Get result
+#         run: echo "${{steps.set-result.outputs.result}}"
+#       - name: set output
+#         run: |
+#           echo "REPLICA_COUNT=3" >> $GITHUB_ENV
+#           echo "DATABASE=mysql" >> $GITHUB_ENV
+#           echo "NODE_PORT=$(expr $(expr $(expr $(expr 1 * $(expr ${{ github.run_number }} - 1)) + ${{ strategy.job-index }}) % 30000) + 30000)" >> $GITHUB_ENV
+#       - name: print output
+#         run: |
+#           echo ${{ env.REPLICA_COUNT }}
+#           echo ${{ env.DATABASE }}
+#           echo ${{ env.NODE_PORT }}
+#       - name: print issue number
+#         run: |
+#           echo $GITHUB_REPOSITORY
+#           echo ${{ github.event.pull_request.number }}
+#           echo ${{ github.event.issue.number }}
+#           echo ${NUMBER}
+#           curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.ACTION_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/Wuyunfan-BUPT/help/issues/${{ github.event.pull_request.number }}/comments -d "{\"body\":\"https://github.com/Wuyunfan-BUPT/help/actions/runs/${{ github.run_id }}\"}"
+#         env:
+#           NUMBER: ${{ github.event.issue.number }}
+# #       - name: print github.job
+# #         run: |
+# #           sleep 10
+# #           echo ${{ github.job }}
+#       - name: generate TEMP_VARI
+#         run: |
+#           curl -L -X POST ${{ env.HEADER }} ${{ env.BASE_URL }} -d "{\"name\":\"VARI_${{ github.run_id }}\",\"value\":\"${{ github.event.pull_request.number }}\"}"
   printHello:
     name: hello1
     runs-on: ubuntu-latest
@@ -105,10 +105,10 @@ jobs:
     steps:
       - name: info
         run: |
-          echo "printTest: ${jobs.printTest.status}"
-          echo "printHello: ${jobs.printHello.status}"
-          echo "printWYF: ${jobs.printWYF.status}"
-          echo "wgetTTT: ${jobs.wgetTTT.status}"
+          echo "printTest: ${{ jobs.printTest.status }}"
+          echo "printHello: ${{ jobs.printHello.status }}"
+          echo "printWYF: ${{ jobs.printWYF.status }}"
+          echo "wgetTTT: ${{ jobs.wgetTTT.status }}"
 
       - name: info1
         run: |
