@@ -113,10 +113,11 @@ jobs:
         run: |
           echo "printWYF: ${{ needs.printHello.result }}"
           echo "printWYF: ${{ needs.printWYF.result }}"
+          echo "wgetTTT: ${{ needs.wgetTTT.result }}"
 
       - name: info1
         run: |
-          echo "printHello: ${{ needs.printWYF.outputs.printWYF_echo3 }}"
+          echo "printHello: ${{ needs.printWYF.steps.echo3.outcome }}"
           echo "printWYF: ${{ needs.printWYF.outputs.printWYF_echo4 }}"
 #      - name: set IS_END values
 #        run: |
