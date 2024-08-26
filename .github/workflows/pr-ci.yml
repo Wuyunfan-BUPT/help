@@ -122,6 +122,8 @@ jobs:
           echo "printWYF: ${{ needs.printHello.result }}"
           echo "printWYF: ${{ needs.printWYF.result }}"
           echo "wgetTTT: ${{ needs.wgetTTT.result }}"
+          echo "wgetTTT: ${{ needs.printTest.matrix.cluster.result }}"
+          echo "wgetTTT: ${{ needs.printTest.matrix.standalone.result }}"
 
       - name: info1
         run: |
