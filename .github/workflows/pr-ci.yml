@@ -105,10 +105,9 @@ jobs:
     steps:
       - name: info
         run: |
-          echo "printTest: ${{ jobs.printTest.status }}"
-          echo "printHello: ${{ jobs.printHello.status }}"
-          echo "printWYF: ${{ jobs.printWYF.status }}"
-          echo "wgetTTT: ${{ jobs.wgetTTT.status }}"
+          echo "printHello: ${{ printHello_result }}"
+          echo "printWYF: ${{ printWYF_result }}"
+          echo "wgetTTT: ${{ wgetTTT_result }}"
 
       - name: info1
         run: |
