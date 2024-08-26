@@ -111,6 +111,7 @@ jobs:
     steps:
       - name: info
         run: |
+          echo "wgetTTT: ${{ needs.printTest.result }}"
           echo "printWYF: ${{ needs.printHello.result }}"
           echo "printWYF: ${{ needs.printWYF.result }}"
           echo "wgetTTT: ${{ needs.wgetTTT.result }}"
