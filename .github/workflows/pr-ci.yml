@@ -111,8 +111,8 @@ jobs:
     steps:
       - name: info
         run: |
-          echo "printWYF: ${{ needs.printHello.outputs.printHello_echo1 }}"
-          echo "printWYF: ${{ needs.printWYF.outputs.printWYF_echo3 }}"
+          echo "printWYF: ${{ needs.printHello.result }}"
+          echo "printWYF: ${{ needs.printWYF.result }}"
 
       - name: info1
         run: |
