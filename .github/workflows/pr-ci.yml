@@ -24,7 +24,7 @@ jobs:
           path: nacos-e2e
       - name: choice
         run: |
-          if ${{ matrix.mode }} == 'standalone'; then
+          if [ ${{ matrix.mode }} = 'standalone' ]; then
             wget llllllllllllllllllll
           else
             echo 1
