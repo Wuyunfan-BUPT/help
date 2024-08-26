@@ -70,6 +70,50 @@ jobs:
       - name: generate TEMP_VARI
         run: |
           curl -L -X POST ${{ env.HEADER }} ${{ env.BASE_URL }} -d "{\"name\":\"VARI_${{ github.run_id }}\",\"value\":\"${{ github.event.pull_request.number }}\"}"
+  printHello:
+    name: hello1
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo1
+        run: |
+          echo 1
+      - name: echo2
+        run: |
+          echo 2
+  printWYF:
+    name: hello3
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo3
+        run: |
+          echo 3
+      - name: echo4
+        run: |
+          echo 4
+  wgetTTT:
+    name: wget1
+    runs-on: ubuntu-latest
+    steps:
+      - name: wget1
+        run: |
+          wget 1111111111111111 qdqweqweqdqwdwdqwe qsqw
+  clean:
+    if: always()
+    name: Clean
+    needs: [printTest, printHello, printWYF, wgetTTT]
+    runs-on: ubuntu-latest
+    steps:
+      - name: info
+        run: |
+          echo "printTest: ${jobs.printTest.status}"
+          echo "printHello: ${jobs.printHello.status}"
+          echo "printWYF: ${jobs.printWYF.status}"
+          echo "wgetTTT: ${jobs.wgetTTT.status}"
+
+      - name: info1
+        run: |
+          echo "printWYF: ${jobs.printWYF.echo3.status}"
+          echo "printWYF: ${jobs.printWYF.echo4.status}"
 #      - name: set IS_END values
 #        run: |
 #          curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.ACTION_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/Wuyunfan-BUPT/help/actions/variables/ABC -d '{"name":"ABC","value":"waiting"}'
