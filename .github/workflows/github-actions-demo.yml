@@ -29,6 +29,11 @@ jobs:
       - name: java e2e test
         run: |
           echo ${{ matrix.mode }}-${{ matrix.version }} 
+          if [ ${{ matrix.mode }} = "cluster" ] && [ ${{ matrix.version }} = "ss" ];then
+            exit 1
+          else
+            exit 0
+          fi
   getresult:
     needs: [prejob, e2e-java-test]
     runs-on: ubuntu-latest
