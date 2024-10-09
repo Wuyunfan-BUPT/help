@@ -29,6 +29,7 @@ jobs:
       - name: java e2e test
         run: |
           echo ${{ matrix.mode }}-${{ matrix.version }} 
+          echo ${{ github.job }}
           if [ ${{ matrix.mode }} = "cluster" ] && [ ${{ matrix.version }} = "ss" ];then
             exit 1
           else
