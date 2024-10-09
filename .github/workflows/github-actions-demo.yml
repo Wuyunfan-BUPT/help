@@ -42,4 +42,4 @@ jobs:
       - name: echo result
         run: |
           echo ${{ needs.e2e-java-test.result }}
-          echo ${{ needs.e2e-java-test.cluster.pp.result }}
+          echo ${{ needs.e2e-java-test.1.result }}
