@@ -28,6 +28,7 @@ jobs:
     steps:
       - name: java e2e test
         run: |
+          echo "${{ github.run_id }}-${{ strategy.job-index }}"
           if [[ ${{ matrix.mode }} == "standalone"* ]];then
             if [[ ${{ matrix.mode }} = "standalone_auth" ]]; then
               echo "standalone_auth"
