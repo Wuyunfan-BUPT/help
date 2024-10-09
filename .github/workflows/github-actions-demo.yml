@@ -29,7 +29,7 @@ jobs:
       - name: java e2e test
         run: |
           echo ${{ matrix.mode }}-${{ matrix.version }} 
-          echo ${{ github.run_number }}
+          echo ${{ jobs.<job_id> }}
           if [ ${{ matrix.mode }} = "cluster" ] && [ ${{ matrix.version }} = "ss" ];then
             exit 1
           else
@@ -43,4 +43,4 @@ jobs:
       - name: echo result
         run: |
           echo ${{ needs.e2e-java-test.result }}
-          echo ${{ needs.e2e-java-test.matrix[0].result }}
+          echo ${{ needs.e2e-java-test.matrix["cluster"].result }}
