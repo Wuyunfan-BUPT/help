@@ -23,11 +23,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        mode: ["cluster","standalone"]
+        mode: ["cluster","standalone","standalone_auth"]
         version: ['pp', 'ss']
     steps:
       - name: java e2e test
         run: |
+          if [[ ${{ matrix.mode }} == "standalone"* ]];then
+            if [[ ${{ matrix.mode }} = "standalone_auth" ]]; then
+              echo "standalone_auth"
+            else 
+              echo "stabdlone"
+            fi
+          else
+            echo "cluster"
+          fi
           echo ${{ matrix.mode }}-${{ matrix.version }} 
           echo ${{ jobs.<job_id> }}
           if [ ${{ matrix.mode }} = "cluster" ] && [ ${{ matrix.version }} = "ss" ];then
@@ -43,4 +52,4 @@ jobs:
       - name: echo result
         run: |
           echo ${{ needs.e2e-java-test.result }}
-          echo ${{ needs.e2e-java-test.matrix.mode[0].version[0].result }}
+          echo ${{ needs.e2e-java-test.result }}
