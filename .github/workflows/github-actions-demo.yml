@@ -8,34 +8,31 @@ env:
   VERSION: $(${{ github.event.pull_request.number || github.ref_name }}-$(uuidgen))
   
 jobs:
-    docker:
-      if: ${{ success() }}
-      name: Docker images
-      runs-on: ubuntu-latest
-      timeout-minutes: 30
-      env:
-        DOCKERHUB_USER_ACTUAL: ${{ secrets.DOCKERHUB_USER }}
-        DOCKERHUB_TOKEN_ACTUAL: ${{ secrets.DOCKERHUB_TOKEN }}
-      steps:
-        - uses: actions/checkout@v3
-          with:
-            repository: Wuyunfan-BUPT/nacosTestTools.git
-            ref: master
-            path: nacosTestTools
-        - name: Generate image tag
-          id: build-images
-          run: |
-            echo TAG=version-ubuntu >> $GITHUB_ENV
-        - name: docker-login-1
-          uses: docker/login-action@v2
-          with:
-            registry: ${{ env.REGISTRY }}
-            username: ${{ secrets.DOCKERHUB_USER }}
-            password: ${{ secrets.DOCKERHUB_TOKEN }}
-        - name: save docker_1 images
-          run: |
-            mkdir build_backup
-            cd nacosTestTools
-            cp -rf ./* ../build_backup/
-            docker build --no-cache -f Dockerfile -t ${DOCKER_REPO}:v3 .
-            docker push ${DOCKER_REPO}:v3
+  prejob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: |
+          echo "hello"
+  e2e-java-test:
+    if: ${{ success() }}
+    name: Java e2e Test
+    needs: [prejob]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: ["cluster","standalone"]
+        version: ['pp', 'ss']
+    steps:
+      - name: java e2e test
+        run: |
+          echo ${{ matrix.mode }}-${{ matrix.version }} 
+  getresult:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo result
+        run: |
+          echo needs.e2e-java-test.result
+          echo needs.e2e-java-test.cluster.pp.result
