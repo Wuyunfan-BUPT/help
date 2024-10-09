@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        mode: ["cluster","standalone","standalone_auth"]
+        mode: ["standlone","cluster","standalone_auth"]
         version: ['pp', 'ss']
     steps:
       - name: java e2e test
