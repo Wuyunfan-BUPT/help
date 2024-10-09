@@ -30,6 +30,7 @@ jobs:
         run: |
           echo ${{ matrix.mode }}-${{ matrix.version }} 
   getresult:
+    needs: [prejob, e2e-java-test]
     runs-on: ubuntu-latest
     steps:
       - name: echo result
