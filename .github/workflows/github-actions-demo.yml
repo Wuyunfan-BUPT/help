@@ -35,10 +35,11 @@ jobs:
             exit 0
           fi
   getresult:
+    if: ${{ always() }}
     needs: [prejob, e2e-java-test]
     runs-on: ubuntu-latest
     steps:
       - name: echo result
         run: |
-          echo needs.e2e-java-test.result
-          echo needs.e2e-java-test.cluster.pp.result
+          echo ${{ needs.e2e-java-test.result }}
+          echo ${{ needs.e2e-java-test.cluster.pp.result }}
