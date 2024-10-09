@@ -43,4 +43,4 @@ jobs:
       - name: echo result
         run: |
           echo ${{ needs.e2e-java-test.result }}
-          echo ${{ needs.e2e-java-test.matrix[0][0].result }}
+          echo ${{ needs.e2e-java-test.matrix.mode[0].version[0].result }}
